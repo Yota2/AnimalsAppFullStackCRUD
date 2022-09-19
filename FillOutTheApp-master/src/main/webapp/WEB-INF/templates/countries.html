@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+
+    <title>countries</title>
+    <link rel = "stylesheet" th:href ="@{/css/cssFTW.css}">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+
+
+
+<div class="main">
+    <pre id="quote">"Countries"</pre>
+    <ul>
+        <tr th:each = "country:${countries}">
+            <a th:href="@{/animals/{countryName}(countryName=${country.countryName})}"><td th:text = "${country.countryName}"></td></a><br>
+        </tr>
+    </ul>
+
+
+    <br>
+    <br>
+    <div class = "row">
+        <div class = "col-lg-3">
+            <a th:href = "@{/countries}" class = "btn btn-primary btn-sm mb-3"> Add Country</a>
+        </div>
+    </div>
+
+    <form method= "post" th:action = @{/countries}>
+        <input type="text" name="countryName" th:text = "*{countryName}"> <br>
+        <input type="submit" value="create">
+    </form>
+
+    <br>
+    <br>
+
+
+
+
+</div>
+</body>
+
+</html>
